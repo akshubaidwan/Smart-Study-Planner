@@ -134,30 +134,24 @@ This project solves these challenges through an intuitive and engaging interface
 
 ## 🖥️ Screenshots
 
+
 ### Login Page
-
-
+![Login Page](screenshots/login.png)
 
 ### Dashboard
-
-*Add screenshot here*
+![Dashboard](screenshots/dashboard.png)
 
 ### Task Manager
-
-*Add screenshot here*
+![Task Manager](screenshots/task-manager.png)
 
 ### Study Vault
-
-*Add screenshot here*
+![Study Vault](screenshots/study-vault.png)
 
 ### Quiz Zone
-
-*Add screenshot here*
+![Quiz Zone](screenshots/quiz-zone.png)
 
 ### Dark Mode
-
-*Add screenshot here*
-
+![Dark Mode](screenshots/dark-mode.png)
 ---
 
 ## 📂 Project Structure
