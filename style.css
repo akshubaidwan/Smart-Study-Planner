@@ -1,0 +1,695 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600&display=swap');
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Quicksand', sans-serif;
+}
+
+/* 🌸 Background */
+body{
+  display:flex;
+  position:relative; /* FIX */
+  overflow-x:hidden; /* FIX */
+  background: linear-gradient(270deg, #fdf2f8, #ecfeff, #fef9c3, #e0f2fe);
+  background-size: 800% 800%;
+  animation: gradientFlow 12s ease infinite;
+  color:#334155;
+}
+
+/* 🧸 Sidebar */
+.sidebar{
+  width:240px;
+  height:100vh;
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(20px);
+  padding:25px;
+  border-right:1px solid #e2e8f0;
+  animation: slideIn 0.8s ease;
+  box-shadow: 5px 0 20px rgba(0,0,0,0.05);
+}
+
+.sidebar h2{
+  color:#ec4899;
+  margin-bottom:30px;
+}
+
+.sidebar li{
+  list-style:none;
+  padding:12px;
+  border-radius:12px;
+  margin-bottom:10px;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.sidebar li:hover{
+  background:#fce7f3;
+  transform:translateX(8px) scale(1.05);
+}
+
+/* 🧾 Main */
+.main{
+  flex:1;
+  padding:30px;
+  animation: fadeIn 1s ease;
+}
+
+header h1{
+  font-size:30px;
+  margin-bottom:20px;
+  animation: float 4s infinite;
+
+  background: linear-gradient(90deg,#ec4899,#6366f1);
+
+  -webkit-background-clip: text; /* Chrome/Safari */
+  background-clip: text;         /* Standard */
+
+  -webkit-text-fill-color: transparent; /* IMPORTANT */
+}
+
+/* 🪄 Cards */
+.card{
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px) scale(1.02);
+}
+
+/* ✏️ Inputs */
+input, select{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border-radius:12px;
+  border:1px solid #e2e8f0;
+  outline:none;
+}
+
+input:focus{
+  border-color:#ec4899;
+}
+
+/* 🎀 Buttons */
+button{
+  width:100%;
+  padding:12px;
+  margin-top:10px;
+  border:none;
+  border-radius:12px;
+  background: linear-gradient(135deg,#f9a8d4,#c4b5fd);
+  color:white;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.05);
+}
+
+/* 📋 Tasks */
+.task{
+  background:#fdf4ff;
+  padding:12px;
+  margin-top:10px;
+  border-radius:15px;
+  display:flex;
+  justify-content:space-between;
+}
+
+.task:hover{
+  background:#fae8ff;
+}
+
+.task.done{
+  background:#dcfce7;
+  text-decoration:line-through;
+}
+
+/* 👻 Ghost Task */
+.task.old{
+  opacity:0.4;
+  filter:grayscale(1);
+  animation: ghostPulse 2s infinite;
+}
+
+/* 📊 Progress */
+.progress{
+  height:12px;
+  background:#e2e8f0;
+  border-radius:10px;
+}
+
+#bar{
+  height:100%;
+  width:0%;
+  background: linear-gradient(90deg,#34d399,#60a5fa);
+}
+
+/* ⏳ Timer */
+.timer{
+  font-size:48px;
+  text-align:center;
+  margin:20px;
+}
+
+/* 🔥 Streak */
+#streak{
+  font-size:36px;
+  color:#f59e0b;
+}
+
+/* 📕 Book */
+#bookImg{
+  width:160px;
+  margin-top:15px;
+  border-radius:15px;
+}
+
+/* 🧸 Floating elements FIXED */
+body::after{
+  content:"🐻📚";
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  font-size:40px;
+
+  z-index:9999; /* IMPORTANT */
+
+  pointer-events:none;
+
+  animation: floatBear 3s ease-in-out infinite;
+}
+body::before{
+  content:"";
+  position:fixed;
+  width:200px;
+  height:200px;
+  background: radial-gradient(circle, rgba(255,182,193,0.4), transparent);
+  top:10%;
+  left:70%;
+  border-radius:50%;
+  pointer-events:none; /* FIX */
+}
+
+/* Animations */
+@keyframes gradientFlow{
+  0%{background-position:0%}
+  50%{background-position:100%}
+  100%{background-position:0%}
+}
+
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes slideIn{
+  from{transform:translateX(-100%)}
+  to{transform:translateX(0)}
+}
+
+@keyframes float{
+  50%{transform:translateY(-10px)}
+}
+
+@keyframes ghostPulse{
+  50%{opacity:0.5}
+}
+
+/* Hidden */
+.hidden{
+  display:none;
+}
+#materialsList .task{
+  justify-content:space-between;
+  align-items:center;
+}
+
+.materials-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+  margin-top:15px;
+}
+
+.material-card{
+  background:#fdf4ff;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.material-card:hover{
+  transform:scale(1.05);
+}
+
+#pdfViewer{
+  margin-top:20px;
+}
+
+#pdfFrame{
+  width:100%;
+  height:500px;
+  border:none;
+  border-radius:15px;
+}
+.class-buttons{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-bottom:15px;
+}
+
+#subjects{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;
+}
+
+.material-card{
+  background:#fdf4ff;
+  padding:15px;
+  border-radius:15px;
+  text-align:center;
+}
+
+
+#pdfFrame{
+  width:100%;
+  height:500px;
+  border:none;
+}
+
+#bookImg{
+  width:180px;
+  margin-top:15px;
+  border-radius:15px;
+  display:block;
+  object-fit:cover;
+}
+
+#quote{
+
+  font-size:22px;
+
+  margin-top:15px;
+
+  line-height:1.8;
+
+  color:#7c3aed;
+
+  font-weight:700;
+
+  text-align:center;
+
+  padding:20px;
+
+  background:rgba(255,255,255,0.5);
+
+  border-radius:18px;
+
+  animation:fadeQuote 1s ease;
+}
+
+/* 🌙 DARK MODE */
+body.darkMode #quote{
+
+  color:#f9a8d4;
+
+  background:rgba(15,23,42,0.5);
+}
+
+@keyframes fadeQuote{
+
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+
+
+/* 🧮 Calculator */
+
+.calc-grid{
+  display:grid;
+
+  /* More vertical layout */
+  grid-template-columns:repeat(3,70px);
+
+  gap:12px;
+
+  justify-content:center;
+
+  margin-top:20px;
+}
+
+.calc-grid button{
+
+  height:70px;
+
+  width:70px;
+
+  border-radius:18px;
+
+  font-size:22px;
+
+  font-weight:600;
+
+  padding:0;
+}
+
+#calcDisplay{
+  width:100%;
+  padding:15px;
+  font-size:24px;
+  text-align:right;
+  border-radius:15px;
+  border:1px solid #e2e8f0;
+  background:#fff;
+}
+
+.clear-btn{
+  grid-column:span 3;
+
+  height:60px;
+}
+
+
+/* 🌙 DARK MODE */
+
+body.darkMode{
+  background:
+  linear-gradient(135deg,#020617,#0f172a,#1e293b);
+  color:#f8fafc;
+}
+
+/* Sidebar */
+body.darkMode .sidebar{
+  background:rgba(15,23,42,0.95);
+  color:#fff;
+  border-right:1px solid #334155;
+}
+
+/* Sidebar Items */
+body.darkMode .sidebar li:hover{
+  background:#1e293b;
+}
+
+/* Cards */
+body.darkMode .card{
+  background:rgba(15,23,42,0.9);
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* Tasks */
+body.darkMode .task{
+  background:#1e293b;
+  color:#fff;
+}
+
+/* Inputs */
+body.darkMode input,
+body.darkMode select{
+  background:#1e293b;
+  color:white;
+  border:1px solid #475569;
+}
+
+/* Buttons */
+body.darkMode button{
+  background:
+  linear-gradient(135deg,#6366f1,#22c55e);
+  color:white;
+}
+
+/* Small Text */
+body.darkMode small{
+  color:#cbd5e1;
+}
+
+/* Progress */
+body.darkMode #bar{
+  background:
+  linear-gradient(90deg,#22c55e,#6366f1);
+}
+
+#nightEffect{
+  position:fixed;
+  inset:0;
+  z-index:-1;
+  overflow:hidden;
+}
+
+.main,
+.sidebar{
+  position:relative;
+  z-index:2;
+}
+
+@keyframes floatBear{
+  0%,100%{
+    transform:translateY(0px);
+  }
+
+  50%{
+    transform:translateY(-10px);
+  }
+}
+
+canvas{
+  position:relative;
+  z-index:1;
+}
+
+
+#timer button{
+  width:auto;
+  min-width:120px;
+}
+
+#timer .card{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+}
+
+#chart{
+  width:300px !important;
+  height:300px !important;
+  margin:auto;
+  display:block;
+}
+
+
+/* 📊 PRODUCTIVITY CHART */
+
+.productivity-card{
+  text-align:center;
+}
+
+.chart-container{
+
+  width:300px;
+  height:300px;
+
+  margin:20px auto;
+
+  position:relative;
+}
+
+#chart{
+
+  width:100% !important;
+  height:100% !important;
+}
+
+/* 📸 TASK PROOF */
+
+.proof-box{
+
+  margin-top:10px;
+}
+
+.proof-box input{
+
+  font-size:12px;
+
+  padding:6px;
+
+  background:white;
+
+  border-radius:10px;
+}
+
+.proof-img{
+
+  width:120px;
+
+  margin-top:10px;
+
+  border-radius:12px;
+
+  object-fit:cover;
+
+  border:2px solid #ddd;
+
+  transition:0.3s;
+}
+
+.proof-img:hover{
+
+  transform:scale(1.05);
+}
+
+/* Better task layout */
+
+.task{
+
+  align-items:flex-start;
+}
+
+.task-buttons{
+
+  display:flex;
+
+  flex-direction:column;
+
+  gap:10px;
+}
+
+
+#batch{
+
+  margin-top:10px;
+
+  background:white;
+
+  border-radius:12px;
+}
+
+/* ⏱ TIMER */
+
+#timerText{
+
+  font-size:70px;
+
+  font-weight:bold;
+
+  text-align:center;
+
+  margin:25px 0;
+
+  color:#6366f1;
+}
+
+body.darkMode #timerText{
+
+  color:#f9a8d4;
+}
+
+#optionsBox button {
+  display: block;
+  width: 100%;
+  margin: 8px 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  font-size: 16px;
+  transition: 0.2s;
+}
+
+#optionsBox button {
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background: white;
+  color: black;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#optionsBox button:hover {
+  background: #f2f2f2;
+}
+
+#optionsBox button.correct {
+  background: #4CAF50 !important;
+  color: white !important;
+  border: none;
+}
+
+#optionsBox button.wrong {
+  background: #f44336 !important;
+  color: white !important;
+  border: none;
+}
+
+#optionsBox button.disabled {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+
+/* 📚 STUDY VAULT */
+
+.study-file{
+
+  display:flex;
+
+  align-items:center;
+
+  justify-content:space-between;
+
+  gap:15px;
+
+  flex-wrap:wrap;
+}
+
+.study-preview{
+
+  width:120px;
+
+  border-radius:12px;
+
+  border:2px solid #ddd;
+
+  object-fit:cover;
+}
+
+.study-actions{
+
+  display:flex;
+
+  gap:10px;
+}
+
+.study-actions button{
+
+  width:auto;
+
+  min-width:90px;
+}

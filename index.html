@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Smart Study Planner</title>
+
+<link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+<div class="sidebar">
+  <h2>📚 Planner</h2>
+  <ul>
+  <li onclick="showSection('dashboard')">Dashboard</li>
+  <li onclick="showSection('tasks')">Tasks</li>
+  <li onclick="showSection('timer')">Timer</li>
+  <li onclick="showSection('materials')">Materials</li>
+  <li onclick="showSection('studyVault')">Study Vault</li>
+  <li onclick="showSection('calculator')">Calculator</li>
+  <li onclick="showSection('quiz')">Quiz</li>
+</ul>
+</div>
+
+<div class="main">
+
+<header>
+  <h1>Smart Study Planner</h1>
+  <h2 id="welcomeUser"></h2>
+  <h3 id="level"></h3>
+ <button onclick="logout()">Logout</button>
+
+<button onclick="toggleTheme()">🌙 Toggle Mode</button>
+</header>
+
+<!-- Dashboard -->
+<!-- Dashboard -->
+<section id="dashboard">
+
+  <div class="card">
+    <h2>Progress</h2>
+    <div class="progress">
+      <div id="bar"></div>
+    </div>
+    <p id="text"></p>
+  </div>
+
+  <div class="card">
+    <h2>🔥 Streak</h2>
+    <h1 id="streak">0</h1>
+    <p id="reward"></p>
+
+    <img
+      id="bookImg"
+      src="https://images-na.ssl-images-amazon.com/images/I/81wgcld4wxL.jpg"
+    >
+  </div>
+
+  <div class="card">
+  <h2>✨ Motivation</h2>
+  <p id="quote"></p>
+</div>
+
+ <div class="card productivity-card">
+
+  <h2>📊 Productivity</h2>
+
+  <div class="chart-container">
+    <canvas id="chart"></canvas>
+  </div>
+
+</div>
+
+</section>
+
+<!-- Tasks -->
+<section id="tasks" class="hidden">
+  <div class="card">
+    <input id="task" placeholder="Task">
+    <input type="date" id="date">
+    <select id="batch">
+
+  <option value="General">General</option>
+
+  <option value="School">School</option>
+
+  <option value="Coding">Coding</option>
+
+  <option value="Revision">Revision</option>
+
+  <option value="Science">Science</option>
+
+  <option value="Fitness">Fitness</option>
+
+</select>
+    <button onclick="addTask()">Add Task</button>
+  </div>
+
+  <div class="card">
+    <div id="list"></div>
+  </div>
+</section>
+
+<!-- Timer -->
+<!-- Timer -->
+<section id="timer" class="hidden">
+
+  <div class="card">
+
+    <input
+      type="number"
+      id="minutes"
+      placeholder="Minutes"
+    >
+
+    <input
+      type="number"
+      id="seconds"
+      placeholder="Seconds"
+    >
+
+    <div id="timerText">00:00</div>
+
+    <button onclick="setTimer()">
+      Set Timer
+    </button>
+
+    <button onclick="start()">
+      Start
+    </button>
+
+    <button onclick="reset()">
+      Stop Timer
+    </button>
+
+  </div>
+
+</section>
+
+<!-- Calculator -->
+<section id="calculator" class="hidden">
+
+  <div class="card">
+
+    <h2>🧮 Calculator</h2>
+
+    <input
+      type="text"
+      id="calcDisplay"
+      readonly
+      placeholder="0"
+    >
+
+    <div class="calc-grid">
+
+      <button onclick="appendCalc('7')">7</button>
+      <button onclick="appendCalc('8')">8</button>
+      <button onclick="appendCalc('9')">9</button>
+      <button onclick="appendCalc('/')">÷</button>
+
+      <button onclick="appendCalc('4')">4</button>
+      <button onclick="appendCalc('5')">5</button>
+      <button onclick="appendCalc('6')">6</button>
+      <button onclick="appendCalc('*')">×</button>
+
+      <button onclick="appendCalc('1')">1</button>
+      <button onclick="appendCalc('2')">2</button>
+      <button onclick="appendCalc('3')">3</button>
+      <button onclick="appendCalc('-')">−</button>
+
+      <button onclick="appendCalc('0')">0</button>
+      <button onclick="appendCalc('.')">.</button>
+      <button onclick="calculate()">=</button>
+      <button onclick="appendCalc('+')">+</button>
+
+      <button onclick="clearCalc()" class="clear-btn">
+        Clear
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- Quiz Section -->
+<section id="quiz" class="hidden">
+
+  <div class="card">
+
+    <h2>🧠 Quiz Zone</h2>
+
+    <!-- Select Class -->
+    <select id="quizClass">
+
+      <option value="">Select Class</option>
+
+      <option value="6">Class 6</option>
+      <option value="7">Class 7</option>
+      <option value="8">Class 8</option>
+      <option value="9">Class 9</option>
+      <option value="10">Class 10</option>
+
+    </select>
+
+    <!-- Select Subject -->
+    <select id="quizSubject">
+
+      <option value="">Select Subject</option>
+
+      <option value="math">Maths</option>
+
+      <option value="science">Science</option>
+
+    </select>
+
+    <button onclick="startQuiz()">
+
+      Start Quiz
+
+    </button>
+
+  </div>
+
+</section>
+
+<section id="materials" class="hidden">
+
+  <div class="card">
+    <h2>📚 Study Materials (Class 6-10)</h2>
+
+    <!-- Class Buttons -->
+    <div class="class-buttons">
+      <button onclick="loadClass(6)">Class 6</button>
+      <button onclick="loadClass(7)">Class 7</button>
+      <button onclick="loadClass(8)">Class 8</button>
+      <button onclick="loadClass(9)">Class 9</button>
+      <button onclick="loadClass(10)">Class 10</button>
+    </div>
+
+    <!-- Subjects -->
+    <div id="subjects"></div>
+
+
+  </div>
+
+</section>
+
+<section id="studyVault" class="hidden">
+  <h2>📚 Study Vault</h2>
+
+  <input
+    type="file"
+    id="studyFile"
+    accept="application/pdf,image/*"
+  >
+
+  <button onclick="uploadStudyFile()">
+    Upload
+  </button>
+
+  <div id="studyFilesList"></div>
+</section>
+
+</div>
+
+
+
+<script src="script.js"></script>
+</body>
+</html>
